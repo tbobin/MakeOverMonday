@@ -5,7 +5,9 @@ MakeOverMonday Week 5
 Makeover
 --------
 
-See <http://www.makeovermonday.co.uk/data> for MakeOverMonday. Makeover source: <http://uk.businessinsider.com/us-economy-added-jobs-faster-than-all-g7-economies-combined-2017-1?r=US&IR=T>
+See <http://www.makeovermonday.co.uk/data> for MakeOverMonday.
+
+Makeover source: <http://uk.businessinsider.com/us-economy-added-jobs-faster-than-all-g7-economies-combined-2017-1?r=US&IR=T>
 
 ``` r
 # loding Data
