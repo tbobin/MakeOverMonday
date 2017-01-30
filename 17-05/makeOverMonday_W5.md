@@ -2,33 +2,52 @@ MakeOverMonday Week 5
 =====================
 ================
 
-GitHub Documents
-----------------
-
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
-
-Including Code
---------------
-
-You can include R code in the document as follows:
+Makeover
+--------
 
 ``` r
-summary(cars)
+# loding Data
+mom_data_ori <- read.xlsx("Employment Growth in G-7 Countries.xlsx", sheet = 1)
+
+# sorting the data
+srt <- mom_data_ori %>% 
+  arrange(Employment.Share) %>% 
+  mutate(Country = factor(Country)) %>% 
+  select(Country)
+srt <- factor(srt$Country)
+
+# create Data Frame for plot
+mom_data <- mom_data_ori %>% 
+  arrange(Employment.Share) %>% 
+  mutate(Country = factor(Country), NetEmpGrowth = -Net.Employment.Growth.Share, EmpShare= Employment.Share) %>%
+  select(-Net.Employment.Growth.Share, -Employment.Share) %>% 
+  gather(NetEmpGrowth, EmpShare, key="cat", value="growth",convert=TRUE) %>% 
+  mutate(lbl_pos = ifelse(cat == "EmpShare", growth + 0.1, growth - 0.1), 
+         lbl = ifelse(cat == "EmpShare", paste0((growth*100),"%"), paste0((growth*-100),"%"))) 
+
+# defining breaks
+brks <- seq(-0.6, 0.6,0.1)
+
+# creating labels
+# lbls <- c(as.character(seq(60, 0, -10)), as.character(seq(10, 60, 10)))
+lbls <- c(paste0(seq(60,0,-10),"%"),paste0(seq(10,60,10),"%"))
+
+# creating the plot
+g <- mom_data %>% ggplot(aes(x=Country, y=growth, fill=cat ))
+g <- g + geom_bar(stat="identity", width = 0.2) +
+  scale_y_continuous(breaks = brks,
+                     labels = lbls,
+                     limits = c(-0.7,0.7)) + 
+  scale_x_discrete(limits=srt) +
+  coord_flip()
+# adding lables
+g <- g + geom_label(aes(y=lbl_pos, label=lbl), vjust = 0)
+# adding title, subtitle and caption
+g <- g + labs(title = "Employee Growth in G-7 Countries 2010", 
+              subtitle = "2010 Q1 - 2016 Q3",
+              caption = "Componenets may not sum to total due to rounding\n Source: Org for Economics") 
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+And that is the result:
 
-Including Plots
----------------
-
-You can also embed plots, for example:
-
-![](makeOverMonday_W5_files/figure-markdown_github/pressure-1.png)
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+![](makeOverMonday_W5_files/figure-markdown_github/plot-1.png)
