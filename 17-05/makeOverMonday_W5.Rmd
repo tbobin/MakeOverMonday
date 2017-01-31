@@ -15,9 +15,9 @@ library(scales)
 
 ## Makeover
 
-See <http://www.makeovermonday.co.uk/data> for MakeOverMonday.
+See <http://www.makeovermonday.co.uk/data> for the MakeOverMonday project.
 
-Makeover source: <http://uk.businessinsider.com/us-economy-added-jobs-faster-than-all-g7-economies-combined-2017-1?r=US&IR=T>
+Data source for the week 05 Makeover: <http://uk.businessinsider.com/us-economy-added-jobs-faster-than-all-g7-economies-combined-2017-1?r=US&IR=T>
 
 
 
@@ -52,6 +52,7 @@ lbls <- c(paste0(seq(60,0,-10),"%"),paste0(seq(10,60,10),"%"))
 
 # creating the plot
 g <- mom_data %>% ggplot(aes(x=Country, y=growth, fill=cat ))
+# add bars
 g <- g + geom_bar(stat="identity", width = 0.2) +
   scale_y_continuous(breaks = brks,
                      labels = lbls,
