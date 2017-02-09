@@ -52,5 +52,7 @@ df2 <- read.csv(textConnection(httr::content(a,
 saveRDS(df, file = "./17-06/chicagoTaxiRides.RDS")
 
 # alternative load data from RDS file 
-df <- readRDS(file = "./17-06/chicagoTaxiRides.RDS")
+CH_Taxi <- readRDS(file = "./17-06/chicagoTaxiRides.RDS")
 
+# check for NA
+sum(is.na(CH_Taxi$pickup_community_area)/length(CH_Taxi$pickup_community_area)*100)
