@@ -16,7 +16,9 @@ Portal of Chicago.
 So I thougt: "ok even if I can not do a viz with that amount of data due to my limited computation capacity 
 lets try to connect to the datasource and let see what I can do"
 
-The conection itself turned out not that hard for small data buckets but I had some problems to load larger amount of data
+The conection itself turned out not that hard for small data buckets but I had some problems to load larger amount of data and with the count function.
+
+you can find my tests in makeovermonday_W6.R
 
 
 
