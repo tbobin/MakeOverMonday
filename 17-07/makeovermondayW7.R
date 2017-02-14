@@ -12,7 +12,7 @@ mom07_df_ori <- read.xlsx("./17-07/Valentines Day Spending.xlsx", sheet = 1)
 color_palette <- c("#ff0066", "#ffb1d0", "#51656e", "#6e8a95",  "#4c4642", "#87847b", "#ccc3ba", "#75b8d1", "#2d543d")
 
 mom07_df <- mom07_df_ori %>% 
-  rename(spend_on = `How.much.money.do.you.plan.to.spend.on.Valentine's.Day.gifts.for`)  %>% 
+  rename(spend_on = `How.much.money`)  %>% 
   gather(key="year", value="value", -Category, -spend_on, -Metric) %>% 
   spread(Metric, value)
 
@@ -38,7 +38,7 @@ g2 <- g +
 g1
 g2
 
-gridExtra::grid.arrange(g1, g2, ncol=2)
+#gridExtra::grid.arrange(g1, g2, ncol=2)
 
 
 #ff0066
