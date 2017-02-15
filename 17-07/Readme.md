@@ -73,3 +73,5 @@ g2 <- g +
 And that is the result:
 
 ![](Readme_files/figure-markdown_github/ploting-1.png)![](Readme_files/figure-markdown_github/ploting-2.png)
+
+We can see very well that the total net average spend fall during the Subprime mortgage crisis from 2008 till 2010 and started to rise in 2011 again. Interesting is that the share of the spend for significant others contain constant during the crisis and fall till 2014 while the total spend was rising.
