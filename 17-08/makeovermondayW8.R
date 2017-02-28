@@ -42,7 +42,7 @@ mydf <- function(yy){
 }
 
 myplot <- function(i){
-  g <- tween_pot %>% filter(i >= .frame) %>% 
+  g <- tween_pot %>% filter(i == .frame) %>% 
     ggplot(aes(y=`Yield.(100.kg/ha)`, x=Area.in.1000ha, color=Year)) + 
     geom_point() + 
     xlim(0,400)+
