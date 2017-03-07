@@ -21,8 +21,9 @@ amex %>% ggplot(aes(x=Category, y=Amount, colour=Category)) +
   geom_boxplot() + 
   scale_y_continuous(labels = dollar_format(prefix = "")) + 
   scale_color_viridis(discrete = T) + 
-  theme_minimal()+
-  theme(legend.position = "none")
+  theme_minimal() +
+  theme(legend.position = "none"
+        ) 
 
 
 myIRQ <- function(Cat){
@@ -59,7 +60,7 @@ amex_IQR %>% arrange(meanCat)  %>%
 amex_IQR %>% arrange(countCat)  %>% 
   mutate(Category=factor(Category, levels = Category)) %>%
   ggplot(aes(x=Category, y="")) + 
-  geom_count(aes(size = countCat), show.legend = F, colour="forestgreen") + 
+  geom_count(aes(size = countCat), show.legend = F, colour="gold") + 
   geom_text(aes(label=countCat), nudge_y = 0.05) + 
   scale_colour_hue()+
   theme_minimal()+
@@ -104,7 +105,7 @@ amex_wo_outlier_stats %>% arrange(meanCat)  %>%
 amex_wo_outlier_stats %>% arrange(countCat)  %>% 
   mutate(Category=factor(Category, levels = Category)) %>%
   ggplot(aes(x=Category, y="")) + 
-  geom_count(aes(size = countCat), show.legend = F, colour="forestgreen") + 
+  geom_count(aes(size = countCat), show.legend = F, colour="gold") + 
   geom_text(aes(label=countCat), nudge_y = 0.15) + 
   scale_colour_hue()+
   theme_minimal()+
