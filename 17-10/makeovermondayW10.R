@@ -33,6 +33,8 @@ SB_Gamer %>% filter(Rating<"B-") %>%
   scale_color_viridis()
 
 SB_Gamer %>% ggplot(aes(x=Rating, y=Video.Views)) + geom_point()
+SB_Gamer %>% ggplot(aes(y=Rating, x=Video.Views)) + geom_point()
+
 
 min(SB_Gamer$Video.Views)
 
