@@ -41,10 +41,11 @@ p <- G7_GDP_groth_all %>% filter(Country != "GBR") %>%
   geom_line(data = (
     G7_GDP_groth_all %>% filter(Country == "GBR")
   ), color = "red") +
-  geom_hline(aes(yintercept = max_avr), G7_GDP_max_Q) +
-  geom_hline(aes(yintercept = avr), (filter(G7_GDP_AVR_per_Q, Country == "GBR")), colour = "orange") +
-  geom_hline(aes(yintercept = min_avr), G7_GDP_min_Q) +
+  geom_hline(aes(yintercept = max_avr), G7_GDP_max_Q, colour = "blue") +
+  geom_hline(aes(yintercept = avr), (filter(G7_GDP_AVR_per_Q, Country == "GBR")), colour = "red") +
+  geom_hline(aes(yintercept = min_avr), G7_GDP_min_Q, colour = "blue") +
   theme_minimal() + 
+  theme(panel.grid = element_blank()) +
   scale_y_continuous(labels = percent) +
   facet_grid(. ~ Quarter) 
 
