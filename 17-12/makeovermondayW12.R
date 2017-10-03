@@ -3,7 +3,7 @@ library(lubridate)
 library(ggplot2)
 
 
-setwd("/17-12")
+#setwd("/17-12")
 
 ncaa_seeds <- read.csv("./17-12/NCAA Mens March Madness Historical Results.csv")
 
