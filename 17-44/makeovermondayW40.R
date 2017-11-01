@@ -21,7 +21,5 @@ Holiday_day_count %>% ggplot(aes(x = week, y = wday.lbl)) +
   facet_grid( ~ month.lbl, scales = "free_x") +
   theme_bw()
 
-Holiday_day_count %>% ggplot(aes(cnt)) + geom_histogram(bins = 100)
 
-summary(Holiday_day_count)
 
