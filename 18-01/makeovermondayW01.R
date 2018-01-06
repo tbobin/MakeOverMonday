@@ -32,13 +32,14 @@ mm_data_total %>% ggplot(aes(x = year, y = Total_ratio)) +
   coord_cartesian(ylim = c(0, 1.35)) +
   scale_y_continuous(labels = percent) + 
   theme_minimal() +
-  labs(y = "Total consumption comp. to 1960", x = "Year")
+  labs(y = "Total consumption comp. to 1960", x = "Year", 
+       title = "The consumption of meat rises stedily since 1960")
 
 mm_data %>% ggplot(aes(x=year, y = pounds, fill = meat)) +
   geom_area(position = "fill") +
   scale_fill_manual(values = c(chicken = "#e54c0b", pork = "#770b70", beef = "#770b1b")) +
   scale_y_continuous(labels = percent) +
   theme_minimal() +
-  labs(y = "Ratio", x = "Year")
+  labs(y = "share", x = "Year", title = "Share of US chicken consumption rises steadily since 1960")
 
 
