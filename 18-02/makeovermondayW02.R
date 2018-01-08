@@ -1,6 +1,5 @@
 
 
-
 library(tidyverse)
 library(data.world)
 
@@ -54,7 +53,9 @@ myplot <- brit %>% ggplot(aes(y = percentage, x = rank_text, fill = gender)) +
   scale_color_manual(values = c(Men = "#5b94ef", Women = "#af0549")) +
   scale_fill_manual(values = c(Men = "#5b94ef", Women = "#af0549")) +
   facet_wrap( ~ question, nrow = 6) +
-  geom_text(aes(label = scales::percent(percentage)), position = position_dodge(0.9), vjust = 0) +
+  #geom_text(aes(label = scales::percent(percentage)), position = position_dodge(0.9), vjust = 0.5, size = 2.5) +
+  geom_text(aes(y = cum_percentage + 0.05, label = scales::percent(cum_percentage), color = gender), vjust = 0, size = 3.5, position = position_dodge(0.7)) +
+  coord_cartesian(ylim = c(0,1.2))+
   theme_minimal() +
   theme( axis.text.y = element_blank(),
          panel.grid = element_blank(),
@@ -67,9 +68,11 @@ myplot <- brit %>% ggplot(aes(y = percentage, x = rank_text, fill = gender)) +
 "Yes - if you look at the individual characteristics then men rate the appearance as more important than women.
 For women, money is faster an important characteristic. If you compare both questions, then for both sexes the 
 appearance is more important than the partner's money. Both characteristics are most unimportant for both sexes 
-compared to the rest of the survey. The most important characteristic is the personality",
+compared to the rest of the survey. The most important characteristic is the personality
+",
        caption = "SOURCE: @YouGov and provided by @mattsmithetc")
 
 myplot
 ggsave("18-02/mm02.png", plot = myplot, device = "png", units = "cm", height = 30, width = 15)
+
 
