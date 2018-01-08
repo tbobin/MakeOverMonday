@@ -62,14 +62,10 @@ myplot <- brit %>% ggplot(aes(y = percentage, x = rank_text, fill = gender)) +
          axis.text.x = element_text(angle = 45, hjust = 1),
          legend.position = "bottom",
          legend.title = element_blank()) +
-  labs(y = "", 
-       title = "Is good looking important to men and money to women?",
+  labs(y = "", x = "", 
+       title = "Cumulated ranking of charakteristics by gender",
        subtitle = 
-"Yes - if you look at the individual characteristics then men rate the appearance as more important than women.
-For women, money is faster an important characteristic. If you compare both questions, then for both sexes the 
-appearance is more important than the partner's money. Both characteristics are most unimportant for both sexes 
-compared to the rest of the survey. The most important characteristic is the personality
-",
+"May sum up to more then 100% due to rounding",
        caption = "SOURCE: @YouGov and provided by @mattsmithetc")
 
 myplot
